@@ -156,7 +156,7 @@ def reencode_video_with_diff_fps(video_path: str, tmp_path: str, extraction_fps:
         str: The path where the tmp file is stored. To be used to load the video from
     '''
     assert which_ffmpeg() != '', 'Is ffmpeg installed? Check if the conda environment is activated.'
-    assert video_path.endswith('.mp4'), 'The file does not end with .mp4. Comment this if expected'
+    assert video_path.endswith('.avi'), 'The file does not end with .mp4. Comment this if expected'
     # create tmp dir if doesn't exist
     os.makedirs(tmp_path, exist_ok=True)
 
@@ -181,12 +181,12 @@ def extract_wav_from_mp4(video_path: str, tmp_path: str) -> str:
         [str, str] -- path to the .wav and .aac audio
     '''
     assert which_ffmpeg() != '', 'Is ffmpeg installed? Check if the conda environment is activated.'
-    assert video_path.endswith('.mp4'), 'The file does not end with .mp4. Comment this if expected'
+    assert video_path.endswith('.avi'), 'The file does not end with .mp4. Comment this if expected'
     # create tmp dir if doesn't exist
     os.makedirs(tmp_path, exist_ok=True)
 
     # extract video filename from the video_path
-    video_filename = os.path.split(video_path)[-1].replace('.mp4', '')
+    video_filename = os.path.split(video_path)[-1].replace('.avi', '')
 
     # the temp files will be saved in `tmp_path` with the same name
     audio_aac_path = os.path.join(tmp_path, f'{video_filename}.aac')
